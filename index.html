@@ -1,187 +1,292 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HV Arena</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
+<title>HV Arena</title>
 
-    body {
-      background: #0b0f19;
-      color: white;
-    }
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,sans-serif;
+}
 
-    header {
-      background: #111827;
-      padding: 18px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #293244;
-    }
+body{
+  background:#080b19;
+  color:white;
+}
 
-    .logo {
-      font-size: 24px;
-      font-weight: bold;
-    }
+header{
+  background:#111827;
+  padding:18px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid #293244;
+}
 
-    .logo span {
-      color: #00e5ff;
-    }
+.logo{
+  font-size:25px;
+  font-weight:bold;
+}
 
-    .hero {
-      text-align: center;
-      padding: 70px 20px;
-      background: linear-gradient(135deg, #111827, #18243b);
-    }
+.logo span{
+  color:#00e5ff;
+}
 
-    .hero h1 {
-      font-size: 42px;
-      margin-bottom: 15px;
-    }
+.hero{
+  text-align:center;
+  padding:70px 20px;
+  background:linear-gradient(135deg,#111827,#18243b);
+}
 
-    .hero h1 span {
-      color: #00e5ff;
-    }
+.hero h1{
+  font-size:42px;
+  margin-bottom:15px;
+}
 
-    .hero p {
-      color: #b8c1d1;
-      font-size: 17px;
-      margin-bottom: 30px;
-    }
+.hero h1 span{
+  color:#00e5ff;
+}
 
-    .button {
-      display: inline-block;
-      background: #00e5ff;
-      color: #061018;
-      padding: 14px 25px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: bold;
-    }
+.hero p{
+  color:#b8c1d1;
+  font-size:18px;
+  margin-bottom:30px;
+}
 
-    section {
-      padding: 35px 20px;
-      max-width: 900px;
-      margin: auto;
-    }
+.btn{
+  display:inline-block;
+  background:#00d9f5;
+  color:#061018;
+  padding:16px 28px;
+  border-radius:12px;
+  font-size:18px;
+  font-weight:bold;
+  text-decoration:none;
+  border:none;
+  cursor:pointer;
+}
 
-    .title {
-      text-align: center;
-      margin-bottom: 25px;
-      font-size: 28px;
-    }
+section{
+  padding:45px 20px;
+  max-width:850px;
+  margin:auto;
+}
 
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 18px;
-    }
+.section-title{
+  text-align:center;
+  font-size:32px;
+  margin-bottom:30px;
+}
 
-    .card {
-      background: #151d2d;
-      padding: 22px;
-      border-radius: 15px;
-      border: 1px solid #293244;
-    }
+.card{
+  background:#151d2e;
+  border:1px solid #293244;
+  border-radius:18px;
+  padding:25px;
+  margin-bottom:20px;
+}
 
-    .card h3 {
-      margin-bottom: 10px;
-      color: #00e5ff;
-    }
+.card h3{
+  color:#00e5ff;
+  font-size:23px;
+  margin-bottom:12px;
+}
 
-    .card p {
-      color: #b8c1d1;
-      line-height: 1.5;
-    }
+.card p{
+  color:#c3cad6;
+  line-height:1.6;
+  margin-bottom:18px;
+}
 
-    footer {
-      text-align: center;
-      padding: 25px;
-      color: #8d98aa;
-      border-top: 1px solid #293244;
-    }
-  </style>
+.form-box{
+  background:#111827;
+  border:1px solid #293244;
+  border-radius:18px;
+  padding:25px;
+}
+
+label{
+  display:block;
+  margin:15px 0 7px;
+  font-weight:bold;
+}
+
+input,select{
+  width:100%;
+  padding:14px;
+  border-radius:10px;
+  border:1px solid #39445a;
+  background:#0b1020;
+  color:white;
+  font-size:16px;
+}
+
+input:focus,select:focus{
+  outline:2px solid #00e5ff;
+}
+
+.success{
+  display:none;
+  background:#123d32;
+  border:1px solid #25d99b;
+  color:#8ff5d2;
+  padding:15px;
+  border-radius:10px;
+  margin-top:20px;
+  text-align:center;
+}
+
+.rules{
+  color:#c3cad6;
+  line-height:1.8;
+}
+
+footer{
+  text-align:center;
+  padding:30px 15px;
+  background:#060914;
+  color:#7f899b;
+  margin-top:20px;
+}
+</style>
 </head>
 
 <body>
 
-  <header>
-    <div class="logo">HV <span>ARENA</span></div>
-    <div>🎮</div>
-  </header>
+<header>
+  <div class="logo">HV <span>ARENA</span></div>
+  <div>🎮</div>
+</header>
 
-  <div class="hero">
-    <h1>Welcome to <span>HV Arena</span></h1>
-    <p>Compete. Climb. Conquer.</p>
+<div class="hero">
+  <h1>Welcome to <span>HV Arena</span></h1>
+  <p>Compete. Climb. Conquer.</p>
 
-    <a href="#tournaments" class="button">
-      View Tournaments
+  <a href="#tournaments" class="btn">
+    View Tournaments
+  </a>
+</div>
+
+<section id="tournaments">
+
+  <h2 class="section-title">🏆 Tournaments</h2>
+
+  <div class="card">
+    <h3>🔥 Solo Tournament</h3>
+    <p>
+      Join the upcoming solo gaming tournament
+      and compete with other players.
+    </p>
+
+    <a href="#register" class="btn">
+      Register Now
     </a>
   </div>
 
-  <section id="tournaments">
-    <h2 class="title">🏆 Tournaments</h2>
+  <div class="card">
+    <h3>⚔️ Squad Tournament</h3>
+    <p>
+      Build your squad and compete against
+      other teams.
+    </p>
 
-    <div class="cards">
+    <a href="#register" class="btn">
+      Register Now
+    </a>
+  </div>
 
-      <div class="card">
-        <h3>🔥 Solo Tournament</h3>
-        <p>Join the upcoming solo gaming tournament.</p>
-        <br>
-        <a href="#" class="button">Coming Soon</a>
+</section>
+
+<section id="register">
+
+  <h2 class="section-title">📝 Tournament Registration</h2>
+
+  <div class="form-box">
+
+    <form id="registrationForm">
+
+      <label for="name">Player Name</label>
+      <input
+        type="text"
+        id="name"
+        placeholder="Enter your name"
+        required
+      >
+
+      <label for="uid">Free Fire UID</label>
+      <input
+        type="text"
+        id="uid"
+        placeholder="Enter your UID"
+        required
+      >
+
+      <label for="phone">Contact Number</label>
+      <input
+        type="tel"
+        id="phone"
+        placeholder="Enter contact number"
+        required
+      >
+
+      <label for="tournament">Select Tournament</label>
+
+      <select id="tournament" required>
+        <option value="">Choose tournament</option>
+        <option>Solo Tournament</option>
+        <option>Squad Tournament</option>
+      </select>
+
+      <br><br>
+
+      <button class="btn" type="submit">
+        Submit Registration
+      </button>
+
+      <div class="success" id="successMessage">
+        ✅ Registration form submitted successfully!
       </div>
 
-      <div class="card">
-        <h3>⚔️ Squad Tournament</h3>
-        <p>Build your squad and compete against other teams.</p>
-        <br>
-        <a href="#" class="button">Coming Soon</a>
-      </div>
+    </form>
 
-      <div class="card">
-        <h3>🏆 Grand Tournament</h3>
-        <p>Big competition. Big battles. More details coming soon.</p>
-        <br>
-        <a href="#" class="button">Coming Soon</a>
-      </div>
+  </div>
 
-    </div>
-  </section>
+</section>
 
-  <section>
-    <h2 class="title">📊 HV Arena</h2>
+<section>
 
-    <div class="cards">
+  <h2 class="section-title">📜 Rules</h2>
 
-      <div class="card">
-        <h3>📝 Registration</h3>
-        <p>Register for tournaments and join the competition.</p>
-      </div>
+  <div class="card rules">
+    <p>1. Use your own gaming account.</p>
+    <p>2. Follow the tournament instructions.</p>
+    <p>3. No cheating or unauthorized software.</p>
+    <p>4. Respect other players.</p>
+    <p>5. Tournament details will be announced soon.</p>
+  </div>
 
-      <div class="card">
-        <h3>📈 Leaderboard</h3>
-        <p>Check tournament rankings and results.</p>
-      </div>
+</section>
 
-      <div class="card">
-        <h3>📜 Rules</h3>
-        <p>Read the tournament rules before participating.</p>
-      </div>
+<footer>
+  © 2026 HV Arena • Gaming Tournament Platform
+</footer>
 
-    </div>
-  </section>
+<script>
+document.getElementById("registrationForm").addEventListener("submit", function(event){
 
-  <footer>
-    © 2026 HV Arena • Gaming Tournament Platform
-  </footer>
+  event.preventDefault();
+
+  document.getElementById("successMessage").style.display = "block";
+
+  this.reset();
+
+});
+</script>
 
 </body>
-  </html>
+      </html>
