@@ -168,7 +168,8 @@ import {
 import {
   getFirestore,
   doc,
-  setDoc
+  setDoc,
+  arrayUnion
 } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
 
   
@@ -253,7 +254,29 @@ onAuthStateChanged(auth, (user) => {
     console.log("Logged in:", user.email);
   }
 });
+  window.joinTournament = async function (tournament) {
+  const user = auth.currentUser;
 
+  if (!user) {
+    alert("⚠️ Pehle Login karo!");
+    return;
+  }
+
+  try {
+    await setDoc(
+      doc(db, "players", user.uid),
+      {
+        tournaments: arrayUnion(tournament)
+      },
+      { merge: true }
+    );
+
+    alert("✅ Tournament joined successfully!");
+  } catch (error) {
+    alert("❌ " + error.message);
+  }
+};
+  
   </script>
 </head>
 
