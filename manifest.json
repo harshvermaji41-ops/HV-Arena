@@ -3,8 +3,10 @@
   "short_name": "HV Arena",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#0b0f19",
+  "background_color": "#080b19",
   "theme_color": "#00e5ff",
-  "description": "HV Arena Gaming Platform",
+  "description": "HV Arena Gaming Tournament Platform",
+  "orientation": "portrait",
+  "categories": ["games", "entertainment"],
   "icons": []
 }
