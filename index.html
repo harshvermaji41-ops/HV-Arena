@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#00e5ff">
+<meta name="theme-color" content="#0b0b0d">
 <title>HV Arena</title>
 
 <style>
@@ -12,428 +12,988 @@
   box-sizing:border-box;
   margin:0;
   padding:0;
-  font-family:Arial,sans-serif;
+  font-family:Arial, sans-serif;
 }
 
 body{
-  background:#080b19;
-  color:white;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(218,166,55,.12),transparent 35%),
+    linear-gradient(180deg,#090909,#11100d 45%,#070707);
+  color:#fff;
+  min-height:100vh;
 }
 
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(120deg,transparent 45%,rgba(255,198,72,.035),transparent 55%);
+}
+
+/* HEADER */
 header{
-  background:#111827;
-  padding:18px 20px;
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:rgba(8,8,8,.94);
+  backdrop-filter:blur(15px);
+  border-bottom:1px solid #3a2b13;
+  padding:13px 16px;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  border-bottom:1px solid #293244;
 }
 
-.logo{
-  font-size:25px;
-  font-weight:bold;
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
 }
 
-.logo span{
-  color:#00e5ff;
+.brand-logo{
+  width:43px;
+  height:43px;
+  border:2px solid #d6a63d;
+  border-radius:14px 4px 14px 4px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:21px;
+  font-weight:900;
+  color:#fff;
+  box-shadow:0 0 18px rgba(214,166,61,.18);
 }
 
+.brand-text{
+  font-size:20px;
+  font-weight:900;
+  letter-spacing:.5px;
+}
+
+.brand-text span{
+  color:#d9a83e;
+}
+
+.menu-btn{
+  border:1px solid #59431d;
+  background:#15130f;
+  color:#e5b44b;
+  padding:9px 12px;
+  border-radius:10px;
+  font-size:18px;
+}
+
+/* HERO */
 .hero{
+  padding:42px 18px 35px;
   text-align:center;
-  padding:70px 20px;
-  background:linear-gradient(135deg,#111827,#18243b);
+  border-bottom:1px solid #2c2416;
+  background:
+    radial-gradient(circle at center,#29200d 0%,#11100d 32%,#080808 72%);
+}
+
+.logo-big{
+  width:112px;
+  height:112px;
+  margin:auto;
+  border:3px solid #d7aa45;
+  border-radius:35px 10px 35px 10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:57px;
+  font-weight:900;
+  color:#f4f4f4;
+  box-shadow:
+    0 0 30px rgba(218,170,64,.25),
+    inset 0 0 25px rgba(218,170,64,.08);
 }
 
 .hero h1{
-  font-size:42px;
-  margin-bottom:15px;
+  margin-top:20px;
+  font-size:36px;
+  letter-spacing:1px;
 }
 
 .hero h1 span{
-  color:#00e5ff;
+  color:#d9a83e;
 }
 
 .hero p{
-  color:#b8c1d1;
-  font-size:18px;
-  margin-bottom:30px;
+  margin-top:10px;
+  color:#aaa;
+  font-size:14px;
 }
 
-.btn{
-  display:inline-block;
-  background:#00d9f5;
-  color:#061018;
-  padding:16px 28px;
-  border-radius:12px;
-  font-size:18px;
+.tagline{
+  margin-top:16px;
+  color:#d9a83e;
+  font-size:11px;
+  letter-spacing:3px;
   font-weight:bold;
-  text-decoration:none;
-  border:none;
-  cursor:pointer;
 }
 
-section{
-  padding:45px 20px;
-  max-width:850px;
+/* NAV */
+.nav{
+  display:flex;
+  gap:8px;
+  padding:13px 14px;
+  overflow-x:auto;
+  border-bottom:1px solid #292015;
+  background:#0c0c0c;
+}
+
+.nav a{
+  white-space:nowrap;
+  text-decoration:none;
+  color:#bbb;
+  background:#15130f;
+  border:1px solid #302516;
+  padding:9px 13px;
+  border-radius:20px;
+  font-size:12px;
+}
+
+.nav a:first-child{
+  color:#e7bd63;
+  border-color:#765722;
+}
+
+/* CONTAINER */
+.container{
+  max-width:900px;
   margin:auto;
+  padding:25px 15px 60px;
 }
 
 .section-title{
-  text-align:center;
-  font-size:32px;
-  margin-bottom:30px;
+  font-size:23px;
+  margin-bottom:15px;
 }
 
+.section-title span{
+  color:#d9a83e;
+}
+
+/* CARDS */
 .card{
-  background:#151d2e;
-  border:1px solid #293244;
+  background:
+    linear-gradient(145deg,rgba(38,31,18,.9),rgba(16,16,16,.96));
+  border:1px solid #44341c;
   border-radius:18px;
-  padding:25px;
-  margin-bottom:20px;
+  padding:18px;
+  margin-bottom:14px;
+  box-shadow:0 10px 30px rgba(0,0,0,.25);
+}
+
+.card-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.badge{
+  background:#2b2110;
+  color:#e2b34d;
+  border:1px solid #705322;
+  padding:5px 9px;
+  border-radius:20px;
+  font-size:10px;
 }
 
 .card h3{
-  color:#00e5ff;
-  font-size:23px;
-  margin-bottom:12px;
+  font-size:20px;
+  margin-bottom:7px;
 }
 
 .card p{
-  color:#c3cad6;
+  color:#999;
+  font-size:13px;
   line-height:1.6;
-  margin-bottom:18px;
 }
 
-.form-box{
-  background:#111827;
-  border:1px solid #293244;
-  border-radius:18px;
-  padding:25px;
+.stats{
+  display:flex;
+  gap:8px;
+  margin:14px 0;
 }
 
-label{
+.stat{
+  flex:1;
+  background:#0d0d0d;
+  border:1px solid #282116;
+  border-radius:11px;
+  padding:9px;
+  text-align:center;
+}
+
+.stat b{
   display:block;
-  margin:15px 0 7px;
-  font-weight:bold;
+  color:#ddd;
+  font-size:14px;
 }
 
-input,select{
+.stat small{
+  color:#777;
+  font-size:9px;
+}
+
+/* BUTTON */
+.btn{
   width:100%;
-  padding:14px;
-  border-radius:10px;
-  border:1px solid #39445a;
-  background:#0b1020;
-  color:white;
-  font-size:16px;
+  border:none;
+  padding:13px;
+  border-radius:11px;
+  background:linear-gradient(135deg,#e1b14b,#9d6d18);
+  color:#090909;
+  font-weight:900;
+  font-size:14px;
+  cursor:pointer;
+  box-shadow:0 5px 18px rgba(203,151,46,.15);
 }
 
-input:focus,select:focus{
-  outline:2px solid #00e5ff;
+.btn:active{
+  transform:scale(.98);
+}
+
+.btn.secondary{
+  margin-top:9px;
+  background:#171717;
+  color:#d8aa48;
+  border:1px solid #59431d;
+}
+
+/* ACCOUNT */
+.account-box{
+  background:linear-gradient(145deg,#17130c,#0c0c0c);
+  border:1px solid #4b391b;
+  border-radius:20px;
+  padding:20px;
+}
+
+.input{
+  width:100%;
+  background:#090909;
+  border:1px solid #302719;
+  color:#fff;
+  padding:13px;
+  border-radius:10px;
+  outline:none;
+  margin-bottom:10px;
+}
+
+.input:focus{
+  border-color:#c99935;
+}
+
+.account-status{
+  padding:12px;
+  border-radius:10px;
+  background:#111;
+  border:1px solid #2e2518;
+  color:#aaa;
+  font-size:13px;
+  margin-bottom:13px;
 }
 
 .success{
+  color:#8ddc9a;
+}
+
+.error{
+  color:#ff8e8e;
+}
+
+/* PROFILE */
+.profile{
   display:none;
-  background:#123d32;
-  border:1px solid #25d99b;
-  color:#8ff5d2;
-  padding:15px;
-  border-radius:10px;
-  margin-top:20px;
   text-align:center;
 }
 
-.rules{
-  color:#c3cad6;
-  line-height:1.8;
+.avatar{
+  width:75px;
+  height:75px;
+  margin:0 auto 10px;
+  border-radius:50%;
+  border:2px solid #d5a640;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:28px;
+  font-weight:bold;
+  background:#18140c;
+  color:#e2b44e;
 }
 
+.profile-name{
+  font-size:20px;
+  font-weight:bold;
+}
+
+.profile-email{
+  color:#777;
+  font-size:12px;
+  margin-top:4px;
+}
+
+/* MY TOURNAMENTS */
+.empty{
+  text-align:center;
+  color:#777;
+  padding:20px;
+  border:1px dashed #3b301e;
+  border-radius:15px;
+}
+
+/* TRUST */
+.trust-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:9px;
+}
+
+.trust{
+  text-align:center;
+  padding:15px 7px;
+  background:#111;
+  border:1px solid #302719;
+  border-radius:13px;
+}
+
+.trust-icon{
+  font-size:24px;
+  margin-bottom:6px;
+}
+
+.trust b{
+  display:block;
+  font-size:11px;
+}
+
+.trust small{
+  color:#777;
+  font-size:8px;
+}
+
+/* FOOTER */
 footer{
   text-align:center;
   padding:30px 15px;
-  background:#060914;
-  color:#7f899b;
-  margin-top:20px;
+  border-top:1px solid #2d2416;
+  color:#666;
+  font-size:11px;
 }
-</style><script type="module">
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+footer strong{
+  color:#cda143;
+}
+
+/* MOBILE */
+@media(max-width:500px){
+  .hero h1{
+    font-size:31px;
+  }
+
+  .trust-grid{
+    grid-template-columns:1fr 1fr 1fr;
+  }
+
+  .stats{
+    gap:5px;
+  }
+
+  .stat{
+    padding:8px 3px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="brand">
+    <div class="brand-logo">HV</div>
+    <div class="brand-text">HV <span>ARENA</span></div>
+  </div>
+
+  <button class="menu-btn" onclick="scrollToAccount()">☰</button>
+</header>
+
+<section class="hero">
+
+  <div class="logo-big">HV</div>
+
+  <h1>HV <span>ARENA</span></h1>
+
+  <p>Compete. Improve. Build your legacy.</p>
+
+  <div class="tagline">
+    PLAY • COMPETE • WIN
+  </div>
+
+</section>
+
+<nav class="nav">
+  <a href="#home">Home</a>
+  <a href="#tournaments">Tournaments</a>
+  <a href="#account">Account</a>
+  <a href="#mytournaments">My Tournaments</a>
+  <a href="#trust">Community</a>
+</nav>
+
+<main class="container">
+
+<!-- TOURNAMENTS -->
+<section id="tournaments">
+
+  <h2 class="section-title">
+    Live <span>Tournaments</span>
+  </h2>
+
+  <div class="card">
+
+    <div class="card-top">
+      <h3>Solo Tournament</h3>
+      <span class="badge">OPEN</span>
+    </div>
+
+    <p>
+      Solo skill-based competition. Join and test your gameplay.
+    </p>
+
+    <div class="stats">
+      <div class="stat">
+        <b>Solo</b>
+        <small>MODE</small>
+      </div>
+
+      <div class="stat">
+        <b>Open</b>
+        <small>STATUS</small>
+      </div>
+
+      <div class="stat">
+        <b>FREE</b>
+        <small>ENTRY</small>
+      </div>
+    </div>
+
+    <button class="btn" onclick="joinTournament('Solo Tournament')">
+      🚀 JOIN NOW
+    </button>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="card-top">
+      <h3>Squad Tournament</h3>
+      <span class="badge">OPEN</span>
+    </div>
+
+    <p>
+      Team up with your squad and compete together.
+    </p>
+
+    <div class="stats">
+      <div class="stat">
+        <b>Squad</b>
+        <small>MODE</small>
+      </div>
+
+      <div class="stat">
+        <b>Open</b>
+        <small>STATUS</small>
+      </div>
+
+      <div class="stat">
+        <b>FREE</b>
+        <small>ENTRY</small>
+      </div>
+    </div>
+
+    <button class="btn" onclick="joinTournament('Squad Tournament')">
+      🚀 JOIN NOW
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ACCOUNT -->
+<section id="account">
+
+  <h2 class="section-title">
+    Player <span>Account</span>
+  </h2>
+
+  <div class="account-box">
+
+    <div id="accountStatus" class="account-status">
+      🔐 Login or create your HV Arena account.
+    </div>
+
+    <div id="authForms">
+
+      <input
+        id="playerName"
+        class="input"
+        type="text"
+        placeholder="Player Name"
+      >
+
+      <input
+        id="freeFireUID"
+        class="input"
+        type="text"
+        placeholder="Free Fire UID"
+      >
+
+      <input
+        id="email"
+        class="input"
+        type="email"
+        placeholder="Email"
+      >
+
+      <input
+        id="password"
+        class="input"
+        type="password"
+        placeholder="Password"
+      >
+
+      <button class="btn" onclick="registerPlayer()">
+        CREATE ACCOUNT
+      </button>
+
+      <button class="btn secondary" onclick="loginPlayer()">
+        LOGIN
+      </button>
+
+    </div>
+
+
+    <div id="profile" class="profile">
+
+      <div class="avatar">HV</div>
+
+      <div id="profileName" class="profile-name">
+        Player
+      </div>
+
+      <div id="profileEmail" class="profile-email">
+        -
+      </div>
+
+      <br>
+
+      <button class="btn secondary" onclick="logoutPlayer()">
+        LOGOUT
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- MY TOURNAMENTS -->
+<section id="mytournaments" style="margin-top:35px;">
+
+  <h2 class="section-title">
+    My <span>Tournaments</span>
+  </h2>
+
+  <div id="myTournamentsList">
+    <div class="empty">
+      Login karke tournament join karo.
+    </div>
+  </div>
+
+</section>
+
+
+<!-- TRUST -->
+<section id="trust" style="margin-top:35px;">
+
+  <h2 class="section-title">
+    Why <span>HV Arena?</span>
+  </h2>
+
+  <div class="trust-grid">
+
+    <div class="trust">
+      <div class="trust-icon">🛡️</div>
+      <b>SAFE</b>
+      <small>Secure account system</small>
+    </div>
+
+    <div class="trust">
+      <div class="trust-icon">👥</div>
+      <b>REAL PLAYERS</b>
+      <small>Gaming community</small>
+    </div>
+
+    <div class="trust">
+      <div class="trust-icon">🏆</div>
+      <b>FAIR PLAY</b>
+      <small>Skill-based matches</small>
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<footer>
+  <strong>HV ARENA</strong><br><br>
+  PLAY • COMPETE • WIN<br><br>
+  Built for gamers.
+</footer>
+
+
+<script type="module">
+
+import {
+  initializeApp
+} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
 
 import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  onAuthStateChanged
+  onAuthStateChanged,
+  signOut
 } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
 
 import {
   getFirestore,
   doc,
   setDoc,
+  getDoc,
   arrayUnion
 } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
 
-  
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
+/* FIREBASE */
+
 const firebaseConfig = {
-  apiKey: "AIzaSyDt5Hr_UiLQEP8FK_XrRXXxAT6ttGJV5dY",
+
+  apiKey: "AIzaSyDt5Hr_UiLQEP8FK_XrRXXaT6ttGJV5dY",
+
   authDomain: "hv-arena-7a23b.firebaseapp.com",
+
   projectId: "hv-arena-7a23b",
+
   storageBucket: "hv-arena-7a23b.firebasestorage.app",
+
   messagingSenderId: "136151206916",
+
   appId: "1:136151206916:web:5d1b1776ad49561802b951",
+
   measurementId: "G-ESREQHMFCR"
+
 };
-  const app = initializeApp(firebaseConfig);
+
+
+const app = initializeApp(firebaseConfig);
+
 const auth = getAuth(app);
+
 const db = getFirestore(app);
 
-window.registerPlayer = async function () {
 
-  const name = document.getElementById("playerName").value.trim();
-  const uid = document.getElementById("playerUID").value.trim();
-  const email = document.getElementById("playerEmail").value.trim();
-  const password = document.getElementById("playerPassword").value;
+/* ELEMENTS */
 
-  const message = document.getElementById("accountMessage");
+const accountStatus =
+  document.getElementById("accountStatus");
 
-  if (!name || !uid || !email || !password) {
-    message.textContent = "⚠️ Sabhi fields fill karo.";
+const authForms =
+  document.getElementById("authForms");
+
+const profile =
+  document.getElementById("profile");
+
+const profileName =
+  document.getElementById("profileName");
+
+const profileEmail =
+  document.getElementById("profileEmail");
+
+const myTournamentsList =
+  document.getElementById("myTournamentsList");
+
+
+/* REGISTER */
+
+window.registerPlayer = async function(){
+
+  const name =
+    document.getElementById("playerName").value.trim();
+
+  const uid =
+    document.getElementById("freeFireUID").value.trim();
+
+  const email =
+    document.getElementById("email").value.trim();
+
+  const password =
+    document.getElementById("password").value;
+
+  if(!name || !uid || !email || !password){
+
+    accountStatus.innerHTML =
+      '<span class="error">⚠️ Sabhi fields fill karo.</span>';
+
     return;
   }
 
-  if (password.length < 6) {
-    message.textContent = "⚠️ Password kam se kam 6 characters ka hona chahiye.";
-    return;
-  }
+  try{
 
-  try {
+    const result =
+      await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
 
-    const userCredential =
-      await createUserWithEmailAndPassword(auth, email, password);
-
-    const user = userCredential.user;
-
-    await setDoc(doc(db, "players", user.uid), {
-      name: name,
-      freeFireUID: uid,
-      email: email,
-      createdAt: new Date().toISOString()
-    });
-
-    message.textContent = "✅ Account successfully created!";
-
-  } catch (error) {
-    message.textContent = "❌ " + error.message;
-  }
-};
-
-window.loginPlayer = async function () {
-
-  const email = document.getElementById("playerEmail").value.trim();
-  const password = document.getElementById("playerPassword").value;
-  const message = document.getElementById("accountMessage");
-
-  if (!email || !password) {
-    message.textContent = "⚠️ Email aur password enter karo.";
-    return;
-  }
-
-  try {
-
-    await signInWithEmailAndPassword(auth, email, password);
-
-    message.textContent = "✅ Login successful!";
-
-  } catch (error) {
-    message.textContent = "❌ Email ya password galat hai.";
-  }
-};
-
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    console.log("Logged in:", user.email);
-  }
-});
-  window.joinTournament = async function (tournament) {
-  const user = auth.currentUser;
-
-  if (!user) {
-    alert("⚠️ Pehle Login karo!");
-    return;
-  }
-
-  try {
     await setDoc(
-      doc(db, "players", user.uid),
+      doc(db,"players",result.user.uid),
       {
-        tournaments: arrayUnion(tournament)
-      },
-      { merge: true }
+        playerName:name,
+        freeFireUID:uid,
+        email:email,
+        tournaments:[]
+      }
     );
 
-    alert("✅ Tournament joined successfully!");
-  } catch (error) {
-    alert("❌ " + error.message);
+    accountStatus.innerHTML =
+      '<span class="success">✅ Account created successfully!</span>';
+
+  }catch(error){
+
+    accountStatus.innerHTML =
+      '<span class="error">❌ ' +
+      error.message +
+      '</span>';
+
   }
+
 };
-  
-  </script>
-</head>
 
-<body>
 
-<header>
-  <div class="logo">HV <span>ARENA</span></div>
-  <div>🎮</div>
-</header>
+/* LOGIN */
 
-<div class="hero">
-  <h1>Welcome to <span>HV Arena</span></h1>
-  <p>Compete. Climb. Conquer.</p>
+window.loginPlayer = async function(){
 
-  <a href="#tournaments" class="btn">
-    View Tournaments
-  </a>
-</div>
+  const email =
+    document.getElementById("email").value.trim();
 
-<section id="tournaments">
+  const password =
+    document.getElementById("password").value;
 
-  <h2 class="section-title">🏆 Tournaments</h2>
+  if(!email || !password){
 
-  <div class="card">
-    <h3>🔥 Solo Tournament</h3>
-    <p>
-      Join the upcoming solo gaming tournament
-      and compete with other players.
-    </p>
+    accountStatus.innerHTML =
+      '<span class="error">⚠️ Email aur password enter karo.</span>';
 
-    <a href="#register" class="btn">
-      Register Now
-    </a>
-  </div>
+    return;
+  }
 
-  <div class="card">
-    <h3>⚔️ Squad Tournament</h3>
-    <p>
-      Build your squad and compete against
-      other teams.
-    </p>
+  try{
 
-    <a href="#register" class="btn">
-      Register Now
-    </a>
-  </div>
+    await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
 
-</section>
+    accountStatus.innerHTML =
+      '<span class="success">✅ Login successful!</span>';
 
-<section id="register">
+  }catch(error){
 
-  <h2 class="section-title">📝 Tournament Registration</h2>
+    accountStatus.innerHTML =
+      '<span class="error">❌ ' +
+      error.message +
+      '</span>';
 
-  <div class="form-box">
+  }
 
-    <form id="registrationForm">
+};
 
-      <label for="name">Player Name</label>
-      <input
-        type="text"
-        id="name"
-        placeholder="Enter your name"
-        required
-      >
 
-      <label for="uid">Free Fire UID</label>
-      <input
-        type="text"
-        id="uid"
-        placeholder="Enter your UID"
-        required
-      >
+/* LOGOUT */
 
-      <label for="phone">Contact Number</label>
-      <input
-        type="tel"
-        id="phone"
-        placeholder="Enter contact number"
-        required
-      >
+window.logoutPlayer = async function(){
 
-      <label for="tournament">Select Tournament</label>
+  await signOut(auth);
 
-      <select id="tournament" required>
-        <option value="">Choose tournament</option>
-        <option>Solo Tournament</option>
-        <option>Squad Tournament</option>
-      </select>
+  accountStatus.innerHTML =
+    "🔐 Login or create your HV Arena account.";
 
-      <br><br>
+};
 
-      <button class="btn" type="submit">
-        Submit Registration
-      </button>
 
-      <div class="success" id="successMessage">
-        ✅ Registration form submitted successfully!
-      </div>
+/* JOIN TOURNAMENT */
 
-    </form>
+window.joinTournament = async function(tournamentName){
 
-  </div>
+  const user = auth.currentUser;
 
-</section>
+  if(!user){
 
-<section>
+    accountStatus.innerHTML =
+      '<span class="error">⚠️ Pehle login karo.</span>';
 
-  <h2 class="section-title">📜 Rules</h2>
+    document
+      .getElementById("account")
+      .scrollIntoView({behavior:"smooth"});
 
-  <div class="card rules">
-    <p>1. Use your own gaming account.</p>
-    <p>2. Follow the tournament instructions.</p>
-    <p>3. No cheating or unauthorized software.</p>
-    <p>4. Respect other players.</p>
-    <p>5. Tournament details will be announced soon.</p>
-  </div>
+    return;
+  }
 
-</section>
+  try{
 
-<footer>
-  © 2026 HV Arena • Gaming Tournament Platform
-</footer>
+    await setDoc(
+      doc(db,"players",user.uid),
+      {
+        tournaments:
+          arrayUnion(tournamentName)
+      },
+      {
+        merge:true
+      }
+    );
 
-<script>
-document.getElementById("registrationForm").addEventListener("submit", function(event){
+    accountStatus.innerHTML =
+      '<span class="success">🏆 Tournament joined successfully!</span>';
 
-  event.preventDefault();
+    loadPlayerData();
 
-  document.getElementById("successMessage").style.display = "block";
+    document
+      .getElementById("mytournaments")
+      .scrollIntoView({behavior:"smooth"});
 
-  this.reset();
+  }catch(error){
+
+    accountStatus.innerHTML =
+      '<span class="error">❌ ' +
+      error.message +
+      '</span>';
+
+  }
+
+};
+
+
+/* LOAD PLAYER */
+
+async function loadPlayerData(){
+
+  const user = auth.currentUser;
+
+  if(!user) return;
+
+  try{
+
+    const snapshot =
+      await getDoc(
+        doc(db,"players",user.uid)
+      );
+
+    if(!snapshot.exists()) return;
+
+    const data =
+      snapshot.data();
+
+    profileName.textContent =
+      data.playerName || "Player";
+
+    profileEmail.textContent =
+      data.email || user.email;
+
+    const tournaments =
+      data.tournaments || [];
+
+    if(tournaments.length === 0){
+
+      myTournamentsList.innerHTML =
+        '<div class="empty">Abhi koi tournament join nahi kiya.</div>';
+
+      return;
+    }
+
+    myTournamentsList.innerHTML =
+      tournaments.map(
+        tournament => `
+          <div class="card">
+            <div class="card-top">
+              <h3>🏆 ${tournament}</h3>
+              <span class="badge">JOINED</span>
+            </div>
+            <p>Your tournament has been added to your account.</p>
+          </div>
+        `
+      ).join("");
+
+  }catch(error){
+
+    console.log(error);
+
+  }
+
+}
+
+
+/* AUTH STATE */
+
+onAuthStateChanged(auth,(user)=>{
+
+  if(user){
+
+    authForms.style.display = "none";
+
+    profile.style.display = "block";
+
+    accountStatus.innerHTML =
+      '<span class="success">🟢 You are logged in.</span>';
+
+    loadPlayerData();
+
+  }else{
+
+    authForms.style.display = "block";
+
+    profile.style.display = "none";
+
+  }
 
 });
+
+
+/* ACCOUNT SCROLL */
+
+window.scrollToAccount = function(){
+
+  document
+    .getElementById("account")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
+
+};
+
 </script>
 
-<section id="account" style="padding:40px 20px;max-width:850px;margin:auto;">
-  <h2 class="section-title">👤 Player Account</h2>
-
-  <div class="card" style="text-align:center;">
-    <input id="playerName" type="text" placeholder="Player Name"
-      style="padding:12px;width:90%;margin:6px;border-radius:8px;">
-
-    <input id="playerUID" type="text" placeholder="Free Fire UID"
-      style="padding:12px;width:90%;margin:6px;border-radius:8px;">
-
-    <input id="playerEmail" type="email" placeholder="Email"
-      style="padding:12px;width:90%;margin:6px;border-radius:8px;">
-
-    <input id="playerPassword" type="password" placeholder="Password"
-      style="padding:12px;width:90%;margin:6px;border-radius:8px;">
-
-    <br><br>
-
-    <button class="btn" onclick="registerPlayer()">Create Account</button>
-    <button class="btn" onclick="loginPlayer()">Login</button>
-
-    <p id="accountMessage"></p>
-  </div>
-</section></body>
-  </html>
+</body>
+      </html>
