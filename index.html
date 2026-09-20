@@ -154,22 +154,106 @@ footer{
   color:#7f899b;
   margin-top:20px;
 }
-</style>
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+</style><script type="module">
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyDt5Hr_UiLQEP8FK_XrRXXxAT6ttGJV5dY",
-    authDomain: "hv-arena-7a23b.firebaseapp.com",
-    projectId: "hv-arena-7a23b",
-    storageBucket: "hv-arena-7a23b.firebasestorage.app",
-    messagingSenderId: "136151206916",
-    appId: "1:136151206916:web:5d1b1776ad49561802b951",
-    measurementId: "G-ESREQHMFCR"
-  };
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
 
-  const app = initializeApp(firebaseConfig);
-</script>
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+
+import {
+  getFirestore,
+  doc,
+  setDoc
+} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDt5Hr_UiLQEP8FK_XrRXXaT6ttGJV5dY",
+  authDomain: "hv-arena-7a23b.firebaseapp.com",
+  projectId: "hv-arena-7a23b",
+  storageBucket: "hv-arena-7a23b.firebasestorage.app",
+  messagingSenderId: "136151206916",
+  appId: "1:136151206916:web:5d1b1776ad49561802b951",
+  measurementId: "G-ESREQHMFCR"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+window.registerPlayer = async function () {
+
+  const name = document.getElementById("playerName").value.trim();
+  const uid = document.getElementById("playerUID").value.trim();
+  const email = document.getElementById("playerEmail").value.trim();
+  const password = document.getElementById("playerPassword").value;
+
+  const message = document.getElementById("accountMessage");
+
+  if (!name || !uid || !email || !password) {
+    message.textContent = "⚠️ Sabhi fields fill karo.";
+    return;
+  }
+
+  if (password.length < 6) {
+    message.textContent = "⚠️ Password kam se kam 6 characters ka hona chahiye.";
+    return;
+  }
+
+  try {
+
+    const userCredential =
+      await createUserWithEmailAndPassword(auth, email, password);
+
+    const user = userCredential.user;
+
+    await setDoc(doc(db, "players", user.uid), {
+      name: name,
+      freeFireUID: uid,
+      email: email,
+      createdAt: new Date().toISOString()
+    });
+
+    message.textContent = "✅ Account successfully created!";
+
+  } catch (error) {
+    message.textContent = "❌ " + error.message;
+  }
+};
+
+window.loginPlayer = async function () {
+
+  const email = document.getElementById("playerEmail").value.trim();
+  const password = document.getElementById("playerPassword").value;
+  const message = document.getElementById("accountMessage");
+
+  if (!email || !password) {
+    message.textContent = "⚠️ Email aur password enter karo.";
+    return;
+  }
+
+  try {
+
+    await signInWithEmailAndPassword(auth, email, password);
+
+    message.textContent = "✅ Login successful!";
+
+  } catch (error) {
+    message.textContent = "❌ Email ya password galat hai.";
+  }
+};
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    console.log("Logged in:", user.email);
+  }
+});
+
+  </script>
 </head>
 
 <body>
@@ -304,5 +388,28 @@ document.getElementById("registrationForm").addEventListener("submit", function(
 });
 </script>
 
-</body>
+<section id="account" style="padding:40px 20px;max-width:850px;margin:auto;">
+  <h2 class="section-title">👤 Player Account</h2>
+
+  <div class="card" style="text-align:center;">
+    <input id="playerName" type="text" placeholder="Player Name"
+      style="padding:12px;width:90%;margin:6px;border-radius:8px;">
+
+    <input id="playerUID" type="text" placeholder="Free Fire UID"
+      style="padding:12px;width:90%;margin:6px;border-radius:8px;">
+
+    <input id="playerEmail" type="email" placeholder="Email"
+      style="padding:12px;width:90%;margin:6px;border-radius:8px;">
+
+    <input id="playerPassword" type="password" placeholder="Password"
+      style="padding:12px;width:90%;margin:6px;border-radius:8px;">
+
+    <br><br>
+
+    <button class="btn" onclick="registerPlayer()">Create Account</button>
+    <button class="btn" onclick="loginPlayer()">Login</button>
+
+    <p id="accountMessage"></p>
+  </div>
+</section></body>
       </html>
