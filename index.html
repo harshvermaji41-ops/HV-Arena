@@ -957,7 +957,104 @@ async function loadPlayerData(){
 }
 
 
-/* AUTH STATE */
+/* TOURNAMENT DETAILS */
+
+window.showTournamentDetails = function(tournamentName){
+
+  const isSolo = tournamentName === "Solo Tournament";
+
+  const details = isSolo
+    ? {
+        mode: "Solo",
+        players: "48 Players",
+        status: "OPEN",
+        entry: "FREE",
+        date: "Coming Soon",
+        rules: "No Hack • Fair Play • Skill Based"
+      }
+    : {
+        mode: "Squad",
+        players: "25 Teams",
+        status: "OPEN",
+        entry: "FREE",
+        date: "Coming Soon",
+        rules: "Team Play • Fair Play • Skill Based"
+      };
+
+  const modal = document.createElement("div");
+
+  modal.id = "tournamentDetailsModal";
+
+  modal.innerHTML = `
+    <div style="
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.85);
+      z-index:9999;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+    ">
+
+      <div style="
+        width:100%;
+        max-width:500px;
+        background:#111;
+        border:1px solid #d9a83e;
+        border-radius:20px;
+        padding:24px;
+        color:white;
+        box-shadow:0 0 30px rgba(218,166,61,.25);
+      ">
+
+        <h2 style="color:#e5b84b;margin-top:0;">
+          🏆 ${tournamentName}
+        </h2>
+
+        <p style="color:#aaa;">
+          Tournament Details
+        </p>
+
+        <div style="line-height:2;">
+          🎮 <b>Mode:</b> ${details.mode}<br>
+          👥 <b>Players:</b> ${details.players}<br>
+          🟢 <b>Status:</b> ${details.status}<br>
+          💰 <b>Entry:</b> ${details.entry}<br>
+          📅 <b>Date:</b> ${details.date}<br>
+          📜 <b>Rules:</b> ${details.rules}
+        </div>
+
+        <button
+          class="btn"
+          style="width:100%;margin-top:20px;"
+          onclick="joinTournament('${tournamentName}'); document.getElementById('tournamentDetailsModal').remove();"
+        >
+          🚀 JOIN TOURNAMENT
+        </button>
+
+        <button
+          onclick="document.getElementById('tournamentDetailsModal').remove();"
+          style="
+            width:100%;
+            margin-top:10px;
+            padding:12px;
+            background:transparent;
+            color:#aaa;
+            border:1px solid #333;
+            border-radius:10px;
+          "
+        >
+          ✕ CLOSE
+        </button>
+
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(modal);
+};
+  /* AUTH STATE */
 
 onAuthStateChanged(auth,(user)=>{
 
